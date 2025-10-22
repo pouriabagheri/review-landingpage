@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find, Review, and Discover Clean Restrooms Nearby - Toilet Review App">
+    <title>Toilet Review - Find Clean Restrooms Nearby</title>
+    <style>
+        /* CSS Variables */
+        :root {
+            /* Primary Colors */
+            --color-primary-green: #10B981;
+            --color-secondary-blue: #3B82F6;
+            --color-warning-gold: #F59E0B;
+            --color-error-red: #EF4444;
+
+            /* Background Colors */
+            --color-bg-white: #FFFFFF;
+            --color-bg-light: #F9FAFB;
+
+            /* Text Colors */
+            --color-text-primary: #111827;
+            --color-text-secondary: #6B7280;
+            --color-text-inverse: #FFFFFF;
+
+            /* Gray Scale */
+            --color-gray-50: #F9FAFB;
+            --color-gray-100: #F3F4F6;
+            --color-gray-200: #E5E7EB;
+            --color-gray-300: #D1D5DB;
+            --color-gray-400: #9CA3AF;
+            --color-gray-500: #6B7280;
+            --color-gray-600: #4B5563;
+            --color-gray-700: #374151;
+            --color-gray-800: #1F2937;
+            --color-gray-900: #111827;
+
+            /* Spacing */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-base: 12px;
+            --spacing-md: 16px;
+            --spacing-lg: 20px;
+            --spacing-xl: 24px;
+            --spacing-2xl: 32px;
+            --spacing-3xl: 40px;
+            --spacing-4xl: 48px;
+            --spacing-5xl: 64px;
+            --spacing-6xl: 80px;
+            --spacing-7xl: 96px;
+
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-base: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+
+            /* Typography */
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+            /* Font Sizes */
+            --font-size-h1: 36px;
+            --font-size-h2: 24px;
+            --font-size-h3: 20px;
+            --font-size-body: 16px;
+            --font-size-caption: 14px;
+            --font-size-small: 12px;
+
+            /* Font Weights */
+            --font-weight-normal: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+
+            /* Line Heights */
+            --line-height-tight: 1.25;
+            --line-height-normal: 1.5;
+            --line-height-relaxed: 1.625;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: var(--font-size-body);
+            line-height: var(--line-height-normal);
+            color: var(--color-text-primary);
+            background-color: var(--color-bg-white);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-xl);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--color-bg-white);
+            padding: var(--spacing-lg) 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: var(--font-size-h3);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text-primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: var(--color-primary-green);
+            border-radius: var(--radius-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta-button {
+            background-color: var(--color-primary-green);
+            color: var(--color-text-inverse);
+            padding: var(--spacing-base) var(--spacing-xl);
+            border-radius: var(--radius-base);
+            text-decoration: none;
+            font-weight: var(--font-weight-semibold);
+            transition: background-color 200ms;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #059669;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+            padding: var(--spacing-6xl) 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-5xl);
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: var(--font-size-h1);
+            font-weight: var(--font-weight-bold);
+            line-height: var(--line-height-tight);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .hero-text h1 .highlight {
+            color: var(--color-primary-green);
+        }
+
+        .hero-text p {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-body);
+            margin-bottom: var(--spacing-2xl);
+            line-height: var(--line-height-relaxed);
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-base);
+            padding: 10px 20px;
+            background-color: var(--color-text-primary);
+            color: var(--color-text-inverse);
+            border-radius: var(--radius-base);
+            text-decoration: none;
+            transition: transform 200ms, background-color 200ms;
+            border: 1px solid var(--color-text-primary);
+        }
+
+        .download-button:hover {
+            transform: translateY(-2px);
+            background-color: var(--color-gray-800);
+        }
+
+        .download-button-icon {
+            width: 30px;
+            height: 30px;
+            flex-shrink: 0;
+        }
+
+        .download-button-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            line-height: 1.2;
+        }
+
+        .download-button-label {
+            font-size: 10px;
+            font-weight: var(--font-weight-normal);
+            opacity: 0.8;
+        }
+
+        .download-button-store {
+            font-size: 16px;
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .download-button-light {
+            background-color: var(--color-bg-white);
+            color: var(--color-text-primary);
+            border-color: var(--color-bg-white);
+        }
+
+        .download-button-light:hover {
+            background-color: var(--color-gray-100);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: var(--spacing-2xl);
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-caption);
+        }
+
+        .hero-stats .stat {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+        }
+
+        .hero-stats img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .hero-image {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: var(--radius-xl);
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--spacing-5xl);
+        }
+
+        .section-title h2 {
+            font-size: var(--font-size-h2);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .section-title p {
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: var(--spacing-6xl) 0;
+            background-color: var(--color-bg-white);
+        }
+
+        .steps {
+            display: grid;
+            gap: var(--spacing-5xl);
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-5xl);
+            align-items: center;
+        }
+
+        .step:nth-child(even) .step-content {
+            order: 2;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background-color: var(--color-primary-green);
+            color: var(--color-text-inverse);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-h3);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .step h3 {
+            font-size: var(--font-size-h3);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .step p {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-lg);
+            line-height: var(--line-height-relaxed);
+        }
+
+        .step-features {
+            list-style: none;
+        }
+
+        .step-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-sm) 0;
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-caption);
+        }
+
+        .step-icon {
+            width: 24px;
+            height: 24px;
+            background-color: rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .step-icon img {
+            width: 12px;
+            height: 12px;
+        }
+
+        .step-image {
+            border-radius: var(--radius-xl);
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .step:nth-child(1) .step-image {
+            background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
+        }
+
+        .step:nth-child(2) .step-image {
+            background: linear-gradient(135deg, #E0E7FF 0%, #C7D2FE 100%);
+        }
+
+        .step:nth-child(3) .step-image {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+        }
+
+        /* Why Users Love Section */
+        .why-users-love {
+            padding: var(--spacing-6xl) 0;
+            background-color: var(--color-bg-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-2xl);
+        }
+
+        .feature-card {
+            background-color: var(--color-bg-white);
+            padding: var(--spacing-2xl);
+            border-radius: var(--radius-md);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: transform 200ms, box-shadow 200ms;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .feature-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .feature-icon.green {
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+
+        .feature-icon.green img {
+            filter: invert(58%) sepia(96%) saturate(388%) hue-rotate(97deg) brightness(94%) contrast(86%);
+        }
+
+        .feature-icon.blue {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        .feature-icon.blue img {
+            filter: invert(45%) sepia(96%) saturate(1800%) hue-rotate(201deg) brightness(98%) contrast(93%);
+        }
+
+        .feature-icon.yellow {
+            background-color: rgba(245, 158, 11, 0.1);
+        }
+
+        .feature-icon.yellow img {
+            filter: invert(68%) sepia(68%) saturate(1584%) hue-rotate(359deg) brightness(98%) contrast(93%);
+        }
+
+        .feature-card h3 {
+            font-size: var(--font-size-h3);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-card p {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-caption);
+            line-height: var(--line-height-relaxed);
+        }
+
+        /* Pro Tips Section */
+        .pro-tips {
+            padding: var(--spacing-6xl) 0;
+            background-color: var(--color-bg-white);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xl);
+        }
+
+        .tip-card {
+            display: flex;
+            gap: var(--spacing-md);
+            padding: var(--spacing-lg) 0;
+        }
+
+        .tip-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-base);
+        }
+
+        .tip-icon img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .tip-icon.green {
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+
+        .tip-icon.blue {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        .tip-icon.orange {
+            background-color: rgba(245, 158, 11, 0.1);
+        }
+
+        .tip-content h4 {
+            font-size: var(--font-size-body);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .tip-content p {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-caption);
+            line-height: var(--line-height-relaxed);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: var(--spacing-6xl) 0;
+            background-color: var(--color-bg-light);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--color-bg-white);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .faq-question {
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .faq-answer {
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-relaxed);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-primary-green) 0%, #059669 100%);
+            padding: var(--spacing-6xl) 0;
+            text-align: center;
+            color: var(--color-text-inverse);
+        }
+
+        .cta-section h2 {
+            font-size: var(--font-size-h2);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .cta-section p {
+            margin-bottom: var(--spacing-2xl);
+            opacity: 0.9;
+        }
+
+        .cta-section .download-buttons {
+            justify-content: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+
+        .qr-code {
+            width: 120px;
+            height: 120px;
+            background-color: var(--color-bg-white);
+            border-radius: var(--radius-md);
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-gray-900);
+            color: var(--color-text-inverse);
+            padding: var(--spacing-5xl) 0 var(--spacing-2xl);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--spacing-5xl);
+            margin-bottom: var(--spacing-5xl);
+        }
+
+        .footer-brand p {
+            color: var(--color-gray-400);
+            margin: var(--spacing-md) 0 var(--spacing-lg);
+            line-height: var(--line-height-relaxed);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            background-color: var(--color-gray-800);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 200ms;
+        }
+
+        .social-link:hover {
+            background-color: var(--color-primary-green);
+        }
+
+        .social-link img {
+            width: 18px;
+            height: 18px;
+        }
+
+        .footer-links h4 {
+            font-size: var(--font-size-body);
+            font-weight: var(--font-weight-semibold);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-links a {
+            color: var(--color-gray-400);
+            text-decoration: none;
+            font-size: var(--font-size-caption);
+            transition: color 200ms;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-text-inverse);
+        }
+
+        .footer-bottom {
+            padding-top: var(--spacing-xl);
+            border-top: 1px solid var(--color-gray-800);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--color-gray-400);
+            font-size: var(--font-size-caption);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: var(--spacing-lg);
+        }
+
+        .footer-legal a {
+            color: var(--color-gray-400);
+            text-decoration: none;
+        }
+
+        .footer-legal a:hover {
+            color: var(--color-text-inverse);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 var(--spacing-md);
+            }
+
+            .hero-content,
+            .step,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .step:nth-child(even) .step-content {
+                order: 0;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 30px;
+            }
+
+            .section-title h2 {
+                font-size: 20px;
+            }
+
+            .step h3 {
+                font-size: 18px;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--spacing-md);
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <div class="logo-icon">
+                        <img src="assets/icons/accessibility-white.svg" alt="Toilet Review" style="width: 20px; height: 20px;">
+                    </div>
+                    <span>Toilet Review</span>
+                </a>
+                <a href="#download" class="cta-button">Download</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>How to Use <span class="highlight">Toilet Review</span></h1>
+                    <p>Your go-to app for finding clean and accessible public restrooms nearby. Join thousands of users who are making restroom decisions easier, one review at a time.</p>
+
+                    <div class="download-buttons">
+                        <a href="#" class="download-button">
+                            <img src="assets/icons/apple-logo.svg" alt="Apple" class="download-button-icon">
+                            <div class="download-button-text">
+                                <span class="download-button-label">Download on the</span>
+                                <span class="download-button-store">App Store</span>
+                            </div>
+                        </a>
+                        <a href="#" class="download-button">
+                            <img src="assets/icons/google-play.svg" alt="Google Play" class="download-button-icon">
+                            <div class="download-button-text">
+                                <span class="download-button-label">GET IT ON</span>
+                                <span class="download-button-store">Google Play</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <img src="assets/icons/star.svg" alt="Rating">
+                            <span>4.8 App</span>
+                        </div>
+                        <div class="stat">
+                            <img src="assets/icons/download.svg" alt="Downloads">
+                            <span>50K+ Downloads</span>
+                        </div>
+                        <div class="stat">
+                            <img src="assets/icons/users.svg" alt="Users">
+                            <span>30K+ Reviews</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- Placeholder for app screenshot -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>Three Simple Steps to Success</h2>
+                <p>Find and review restrooms with ease using our intuitive app</p>
+            </div>
+
+            <div class="steps">
+                <!-- Step 1 -->
+                <div class="step">
+                    <div class="step-content">
+                        <div class="step-number">1</div>
+                        <h3>Search Nearby Restrooms</h3>
+                        <p>Open the Toilet Review app and instantly discover all available public restrooms near you. Our GPS-powered search makes finding the closest facilities effortless.</p>
+                        <ul class="step-features">
+                            <li><span class="step-icon"><img src="assets/icons/map-pin.svg" alt="" style="filter: invert(58%) sepia(96%) saturate(388%) hue-rotate(97deg) brightness(94%) contrast(86%);"></span>Automatic Location Detection</li>
+                            <li><span class="step-icon"><img src="assets/icons/clock.svg" alt="" style="filter: invert(58%) sepia(96%) saturate(388%) hue-rotate(97deg) brightness(94%) contrast(86%);"></span>Real-time distance updates to nearby restrooms</li>
+                            <li><span class="step-icon"><img src="assets/icons/accessibility.svg" alt="" style="filter: invert(58%) sepia(96%) saturate(388%) hue-rotate(97deg) brightness(94%) contrast(86%);"></span>Search by Directions</li>
+                        </ul>
+                    </div>
+                    <div class="step-image">
+                        <!-- Placeholder for screenshot -->
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step">
+                    <div class="step-content">
+                        <div class="step-number">2</div>
+                        <h3>Check Reviews & Details</h3>
+                        <p>Tap on any restroom location to view comprehensive information, including user ratings, cleanliness scores, accessibility features, and real photos submitted by the community.</p>
+                        <ul class="step-features">
+                            <li><span class="step-icon"><img src="assets/icons/star-green.svg" alt=""></span>Real User Reviews</li>
+                            <li><span class="step-icon"><img src="assets/icons/camera.svg" alt="" style="filter: invert(58%) sepia(96%) saturate(388%) hue-rotate(97deg) brightness(94%) contrast(86%);"></span>Photo Gallery</li>
+                            <li><span class="step-icon"><img src="assets/icons/checklist.svg" alt="" style="filter: invert(58%) sepia(96%) saturate(388%) hue-rotate(97deg) brightness(94%) contrast(86%);"></span>Amenity Information</li>
+                        </ul>
+                    </div>
+                    <div class="step-image">
+                        <!-- Placeholder for screenshot -->
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step">
+                    <div class="step-content">
+                        <div class="step-number">3</div>
+                        <h3>Contribute Your Experience</h3>
+                        <p>After your visit, help the community by sharing your experience. Rate the restroom, upload photos, and leave a review to help others make informed decisions.</p>
+                        <ul class="step-features">
+                            <li><span class="step-icon"><img src="assets/icons/star-green.svg" alt=""></span>Quick Review Process</li>
+                            <li><span class="step-icon"><img src="assets/icons/camera.svg" alt="" style="filter: invert(58%) sepia(96%) saturate(388%) hue-rotate(97deg) brightness(94%) contrast(86%);"></span>Add Records</li>
+                        </ul>
+                    </div>
+                    <div class="step-image">
+                        <!-- Placeholder for screenshot -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Users Love Section -->
+    <section class="why-users-love">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Users Love Our App</h2>
+                <p>Discover the features that make Toilet Review the go-to app for restroom discovery</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon green">
+                        <img src="assets/icons/clock.svg" alt="Real-Time Updates">
+                    </div>
+                    <h3>Real-Time Updates</h3>
+                    <p>Get instant notifications about newly added restrooms and updated reviews in your area.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon blue">
+                        <img src="assets/icons/star.svg" alt="Verified Reviews">
+                    </div>
+                    <h3>Verified Reviews</h3>
+                    <p>Read authentic reviews from real users who have visited these locations.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon yellow">
+                        <img src="assets/icons/accessibility-filled.svg" alt="Accessible Focus">
+                    </div>
+                    <h3>Accessible Focus</h3>
+                    <p>Filter results by accessibility features to find restrooms that meet your specific needs.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon green">
+                        <img src="assets/icons/accessibility.svg" alt="Offline Access">
+                    </div>
+                    <h3>Offline Access</h3>
+                    <p>Download area maps and access saved locations even without an internet connection.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon blue">
+                        <img src="assets/icons/community.svg" alt="Community Driven">
+                    </div>
+                    <h3>Community Driven</h3>
+                    <p>Join thousands of users contributing to the most comprehensive restroom database.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon yellow">
+                        <img src="assets/icons/mobile.svg" alt="Intuitive Design">
+                    </div>
+                    <h3>Intuitive Design</h3>
+                    <p>Navigate effortlessly with our user-friendly interface designed for quick access.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pro Tips Section -->
+    <section class="pro-tips">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pro Tips for Better Experience</h2>
+                <p>Maximize your Toilet Review app experience with these helpful tips</p>
+            </div>
+
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon green">
+                        <img src="assets/icons/map-pin.svg" alt="Enable Location" style="filter: invert(58%) sepia(96%) saturate(388%) hue-rotate(97deg) brightness(94%) contrast(86%);">
+                    </div>
+                    <div class="tip-content">
+                        <h4>Enable Location Services</h4>
+                        <p>Allow location access to discover nearby restrooms and get accurate directions instantly.</p>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon green">
+                        <img src="assets/icons/camera.svg" alt="Take Recent Photos" style="filter: invert(58%) sepia(96%) saturate(388%) hue-rotate(97deg) brightness(94%) contrast(86%);">
+                    </div>
+                    <div class="tip-content">
+                        <h4>Take Recent Photos</h4>
+                        <p>Upload current photos to help others see the actual condition of facilities.</p>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon green">
+                        <img src="assets/icons/bookmark.svg" alt="Save Your Favorites" style="filter: invert(58%) sepia(96%) saturate(388%) hue-rotate(97deg) brightness(94%) contrast(86%);">
+                    </div>
+                    <div class="tip-content">
+                        <h4>Save Your Favorites</h4>
+                        <p>Bookmark frequently visited locations for quick access when you need them.</p>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon blue">
+                        <img src="assets/icons/filter-blue.svg" alt="Use Smart Filters">
+                    </div>
+                    <div class="tip-content">
+                        <h4>Use Smart Filters</h4>
+                        <p>Filter by cleanliness rating, accessibility features, and amenities to find exactly what you need.</p>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon orange">
+                        <img src="assets/icons/download-orange.svg" alt="Download for Offline">
+                    </div>
+                    <div class="tip-content">
+                        <h4>Download for Offline Use</h4>
+                        <p>Save maps and location data for areas you frequently visit or travel to.</p>
+                    </div>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon orange">
+                        <img src="assets/icons/clock-orange.svg" alt="Check Recent Reviews">
+                    </div>
+                    <div class="tip-content">
+                        <h4>Check Recent Reviews</h4>
+                        <p>Sort by most recent reviews to get the latest information about restroom conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">How accurate is the location data?</div>
+                    <div class="faq-answer">Our app uses GPS technology combined with user-submitted data to provide highly accurate location information. We continuously verify and update locations based on community feedback to ensure reliability.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Can I use the app without creating an account?</div>
+                    <div class="faq-answer">Yes! You can browse restroom locations and read reviews without an account. However, creating a free account allows you to submit reviews, upload photos, and save favorite locations.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">How can I add a new restroom location?</div>
+                    <div class="faq-answer">Simply tap the "Add Location" button in the app, enter the address or drop a pin on the map, and provide basic information about the restroom. Our team will review and approve new locations within 24 hours.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">Is my location data private?</div>
+                    <div class="faq-answer">Absolutely. We only use your location data to show nearby restrooms and never share it with third parties. You can review our privacy policy for complete details on data handling.</div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">What if I find incorrect information?</div>
+                    <div class="faq-answer">You can report incorrect information directly through the app by tapping "Report an Issue" on any location page. Our team will investigate and update the information promptly.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="download">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Download Toilet Review today and join thousands of users finding clean, accessible restrooms with ease.</p>
+
+            <div class="download-buttons">
+                <a href="#" class="download-button download-button-light">
+                    <img src="assets/icons/apple-logo-dark.svg" alt="Apple" class="download-button-icon">
+                    <div class="download-button-text">
+                        <span class="download-button-label">Download on the</span>
+                        <span class="download-button-store">App Store</span>
+                    </div>
+                </a>
+                <a href="#" class="download-button download-button-light">
+                    <img src="assets/icons/google-play-dark.svg" alt="Google Play" class="download-button-icon">
+                    <div class="download-button-text">
+                        <span class="download-button-label">GET IT ON</span>
+                        <span class="download-button-store">Google Play</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="qr-code">
+                <!-- QR code placeholder -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">
+                            <img src="assets/icons/accessibility-white.svg" alt="Toilet Review" style="width: 20px; height: 20px;">
+                        </div>
+                        <span>Toilet Review</span>
+                    </a>
+                    <p>Find, review, and discover clean restrooms nearby. Making public restroom decisions easier, one review at a time.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <img src="assets/icons/twitter.svg" alt="Twitter">
+                        </a>
+                        <a href="#" class="social-link">
+                            <img src="assets/icons/instagram.svg" alt="Instagram">
+                        </a>
+                        <a href="#" class="social-link">
+                            <img src="assets/icons/linkedin.svg" alt="LinkedIn">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Community Guidelines</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2025 Toilet Review. All rights reserved.</div>
+                <div class="footer-legal">
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
