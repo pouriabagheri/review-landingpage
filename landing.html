@@ -677,48 +677,336 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                padding: 0 var(--spacing-md);
+            /* Typography scaling */
+            :root {
+                --font-size-h1: 28px;
+                --font-size-h2: 22px;
+                --font-size-h3: 18px;
+                --font-size-body: 15px;
+                --font-size-caption: 13px;
             }
 
-            .hero-content,
-            .step,
-            .footer-content {
+            /* Container adjustments with better margins */
+            .container {
+                padding: 0 var(--spacing-lg);
+            }
+
+            /* Header adjustments */
+            header {
+                padding: var(--spacing-md) 0;
+            }
+
+            .logo {
+                font-size: var(--font-size-body);
+            }
+
+            .logo-icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .cta-button {
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: var(--font-size-caption);
+            }
+
+            /* Hero section */
+            .hero {
+                padding: var(--spacing-4xl) 0 var(--spacing-3xl);
+            }
+
+            .hero-content {
                 grid-template-columns: 1fr;
+                gap: var(--spacing-2xl);
+            }
+
+            .hero-text h1 {
+                font-size: 28px;
+                margin-bottom: var(--spacing-md);
+            }
+
+            .hero-text p {
+                font-size: var(--font-size-caption);
+                margin-bottom: var(--spacing-lg);
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                margin-bottom: var(--spacing-lg);
+                align-items: center;
+            }
+
+            .download-button {
+                padding: 14px 20px;
+                max-width: 280px;
+                width: 100%;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: var(--spacing-md);
+                font-size: 12px;
+            }
+
+            .hero-image {
+                min-height: 250px;
+            }
+
+            /* Sections spacing */
+            .how-it-works,
+            .why-users-love,
+            .pro-tips,
+            .faq,
+            .cta-section {
+                padding: var(--spacing-4xl) 0;
+            }
+
+            /* Section titles */
+            .section-title {
+                margin-bottom: var(--spacing-3xl);
+                padding: 0 var(--spacing-sm);
+            }
+
+            .section-title h2 {
+                font-size: 22px;
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .section-title p {
+                font-size: var(--font-size-caption);
+            }
+
+            /* How it works steps */
+            .steps {
+                gap: var(--spacing-3xl);
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
             }
 
             .step:nth-child(even) .step-content {
                 order: 0;
             }
 
-            .features-grid {
-                grid-template-columns: 1fr;
+            .step-content {
+                padding: 0 var(--spacing-sm);
             }
 
-            .tips-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-text h1 {
-                font-size: 30px;
-            }
-
-            .section-title h2 {
-                font-size: 20px;
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: var(--font-size-body);
+                margin-bottom: var(--spacing-md);
             }
 
             .step h3 {
                 font-size: 18px;
+                margin-bottom: var(--spacing-sm);
             }
 
-            .download-buttons {
-                flex-direction: column;
+            .step p {
+                font-size: var(--font-size-caption);
+                margin-bottom: var(--spacing-md);
+            }
+
+            .step-features li {
+                font-size: 12px;
+                padding: var(--spacing-xs) 0;
+            }
+
+            .step-image {
+                min-height: 220px;
+                margin: 0 var(--spacing-sm);
+            }
+
+            /* Features grid */
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+
+            .feature-card {
+                padding: var(--spacing-lg);
+                margin: 0 var(--spacing-xs);
+            }
+
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+                margin-bottom: var(--spacing-md);
+            }
+
+            .feature-icon img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .feature-card h3 {
+                font-size: var(--font-size-body);
+                margin-bottom: var(--spacing-xs);
+            }
+
+            .feature-card p {
+                font-size: 12px;
+            }
+
+            /* Tips grid */
+            .tips-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-sm);
+            }
+
+            .tip-card {
+                padding: var(--spacing-md) var(--spacing-sm);
+            }
+
+            .tip-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            .tip-icon img {
+                width: 18px;
+                height: 18px;
+            }
+
+            .tip-content h4 {
+                font-size: var(--font-size-caption);
+            }
+
+            .tip-content p {
+                font-size: 12px;
+            }
+
+            /* FAQ */
+            .faq-list {
+                padding: 0 var(--spacing-xs);
+            }
+
+            .faq-item {
+                padding: var(--spacing-md);
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .faq-question {
+                font-size: var(--font-size-caption);
+                margin-bottom: var(--spacing-xs);
+            }
+
+            .faq-answer {
+                font-size: 12px;
+            }
+
+            /* CTA section */
+            .cta-section h2 {
+                font-size: 22px;
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .cta-section p {
+                font-size: var(--font-size-caption);
+                margin-bottom: var(--spacing-lg);
+                padding: 0 var(--spacing-md);
+            }
+
+            .cta-section .download-buttons {
+                margin-bottom: var(--spacing-lg);
+                align-items: center;
+            }
+
+            .qr-code {
+                width: 100px;
+                height: 100px;
+            }
+
+            /* Footer */
+            footer {
+                padding: var(--spacing-3xl) 0 var(--spacing-lg);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-2xl);
+                margin-bottom: var(--spacing-2xl);
+            }
+
+            .footer-brand p {
+                font-size: var(--font-size-caption);
+                margin: var(--spacing-sm) 0 var(--spacing-md);
+            }
+
+            .footer-links h4 {
+                font-size: var(--font-size-caption);
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .footer-links a {
+                font-size: 12px;
             }
 
             .footer-bottom {
                 flex-direction: column;
-                gap: var(--spacing-md);
+                gap: var(--spacing-sm);
                 text-align: center;
+                font-size: 12px;
+            }
+
+            .footer-legal {
+                gap: var(--spacing-md);
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            :root {
+                --font-size-h1: 24px;
+                --font-size-h2: 20px;
+                --font-size-h3: 16px;
+            }
+
+            .container {
+                padding: 0 var(--spacing-md);
+            }
+
+            .hero {
+                padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+            }
+
+            .download-button {
+                padding: 12px 16px;
+                max-width: 240px;
+            }
+
+            .download-button-icon {
+                width: 26px;
+                height: 26px;
+            }
+
+            .download-button-label {
+                font-size: 10px;
+            }
+
+            .download-button-store {
+                font-size: 15px;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .step-image {
+                min-height: 180px;
+            }
+
+            .feature-card {
+                margin: 0;
+            }
+
+            .tip-card {
+                padding: var(--spacing-md) 0;
             }
         }
     </style>
